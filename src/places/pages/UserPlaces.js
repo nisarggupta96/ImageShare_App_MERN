@@ -8,23 +8,23 @@ const PLACES = [
     id: 'p1',
     title: 'Taj Mahal',
     description: 'The Taj Mahal is an ivory-white marble mausoleum on the southern bank of the river Yamuna in the Indian city of Agra',
-    image: 'https://dummyimage.com/400',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg',
     address: 'Agra, Uttar Pradesh',
     location: {
       lat: 27.1751,
-      long: 78.0421,
+      lng: 78.0421,
     },
     creator: 'u1',
   },
   {
     id: 'p2',
-    title: 't2',
-    description: 'desc2',
-    image: 'https://dummyimage.com/400',
-    address: 'add2',
+    title: 'Leaning Tower of Pisa',
+    description: 'Elaborately adorned 14th-century tower (56 meters at its tallest point) with a world-famous lean.',
+    image: 'https://public.media.tweentribune.com/tt/header/pisa_600_06-10-15.jpg',
+    address: 'Rome',
     location: {
-      lat: 50,
-      long: 100
+      lat: 43.722952,
+      lng: 10.3944083
     },
     creator: 'u2',
   },

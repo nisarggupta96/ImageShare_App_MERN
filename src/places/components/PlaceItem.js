@@ -24,7 +24,7 @@ const PlaceItem = (props) => {
         footerClass='place-item__modal-actions'
         footer={<Button onClick={() => toggleMapHandler(false)}>Close</Button>}>
         <div className='map-container'>
-          <Map coordinates={props.coordinates} />
+          <Map center={props.coordinates} zoom={16} />
         </div>
       </Modal>
 
