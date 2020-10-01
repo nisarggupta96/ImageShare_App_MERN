@@ -21,9 +21,30 @@ const inputReducer = (state, action) => {
   }
 };
 
+/**
+ * 
+ * @param {{
+ *  id: string, 
+ *  element: string
+ *  type: [string], 
+ *  placeholder:string, 
+ *  onChange: function 
+ *  value: string,
+ *  onBlur: function
+ *  validators: Array<function>,
+ *  errorText: string,
+ *  onInput: function,
+ *  value: [string],
+ *  valid: [boolean]
+ * }} props 
+ */
 const Input = (props) => {
 
-  const [inputState, dispatch] = useReducer(inputReducer, { value: '', isValid: false, isTouched: false });
+  const [inputState, dispatch] = useReducer(inputReducer, {
+    value: props.initialValue || '',
+    isValid: props.initialIsValid || false,
+    isTouched: false
+  });
 
   const { id, onInput } = props;
   const { value, isValid } = inputState;
