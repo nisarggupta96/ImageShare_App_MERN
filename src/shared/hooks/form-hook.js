@@ -6,6 +6,9 @@ const formReducer = (state, action) => {
       let formValid = true;
 
       for (const inputId in state.inputs) {
+        if (!state.inputs[inputId]) {
+          continue;
+        }
         if (inputId === action.inputId) {
           formValid = formValid && action.isValid;
         } else {
@@ -36,6 +39,11 @@ const formReducer = (state, action) => {
   }
 }
 
+/**
+ * @param {Object} initialInput 
+ * @param {boolean} initialValidity 
+ * @returns {[formState: Object, inputHandler: Function, setFormData: Function]}
+ */
 export const useForm = (initialInput, initialValidity) => {
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: initialInput,
