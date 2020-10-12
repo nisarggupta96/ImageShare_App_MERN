@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const mongoose = require('mongoose');
 
 const placesRoutes = require('./routes/places-routes');
 const userRoutes = require('./routes/users-routes.js');
 const HttpError = require('./models/http-error');
-
 
 const app = express();
 
@@ -28,4 +28,9 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || 'Something went wrong' });
 });
 
-app.listen(5000);
+const MONGO_URL = process.env.MONGO_URL;
+mongoose.connect(MONGO_URL).then(() => {
+  app.listen(5000);
+}).catch((e) => {
+  console.log(e);
+});

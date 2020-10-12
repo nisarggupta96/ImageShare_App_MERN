@@ -3,6 +3,7 @@ const { validationResult } = require('express-validator');
 
 const HttpError = require('../models/http-error');
 const getCoordinatesFromAddress = require('../utils/locations');
+const Place = require('../models/place');
 
 let PLACES = [
   {
@@ -65,16 +66,20 @@ const createPlace = async (req, res, next) => {
     return next(error);
   }
 
-  const createdPlace = {
-    id: uuid(),
+  const createdPlace = new Place({
     title,
     description,
-    location: coordinates,
+    image: 'https://via.placeholder.com/300',
     address,
+    location: coordinates,
     creator,
-  };
-
-  PLACES.push(createdPlace);
+  });
+  
+  try {
+    await createdPlace.save();
+  } catch (e) {
+    return next(new HttpError('Creating place failed, try again', 500));
+  }
   res.status(201).json({ place: createdPlace });
 };
 
